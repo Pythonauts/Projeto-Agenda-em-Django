@@ -9,6 +9,7 @@ comandos
 settings.py
 static/
 media/
+project/local_settings.py
 
 # Backup files # 
 *.bak 
