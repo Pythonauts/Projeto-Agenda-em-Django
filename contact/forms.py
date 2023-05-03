@@ -4,20 +4,16 @@ from . import models
 
 
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                'placeholder': 'Name'
-            }
-        ),
-        label='Primeiro nome',
-        help_text='Texto de ajuda para o usuário'
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={'accept': 'image/*', }
+        )
     )
 
     class Meta:
         model = models.Contact
         fields = (
-            'first_name', 'last_name', 'phone', 'email', 'description', 'category',
+            'first_name', 'last_name', 'phone', 'email', 'description', 'category', 'picture',
         )
 
     def clean(self):
