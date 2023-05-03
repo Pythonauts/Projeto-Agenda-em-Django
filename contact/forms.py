@@ -4,6 +4,16 @@ from . import models
 
 
 class ContactForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Name'
+            }
+        ),
+        label='Primeiro nome',
+        help_text='Texto de ajuda para o usuário'
+    )
+
     class Meta:
         model = models.Contact
         fields = (
