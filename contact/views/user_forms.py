@@ -16,13 +16,11 @@ def register(request):
             messages.success(request, 'Usuário registrado')
             return redirect('contact:login')
 
-    return render(
-        request,
-        'contact/register.html',
-        {
-            'form': form
-        }
-    )
+    return render(request, 'contact/register.html',
+                  {
+                      'form': form
+                  }
+                  )
 
 
 @login_required(login_url='contact:login')
@@ -50,7 +48,7 @@ def user_update(request):
         )
 
     form.save()
-    return redirect('contact:user_update')
+    return redirect('contact:user_update', messages.success(request, 'Atualizado com sucesso!'))
 
 
 def login_view(request):

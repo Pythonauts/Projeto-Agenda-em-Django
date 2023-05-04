@@ -67,9 +67,7 @@ class RegisterUpdateForm(forms.ModelForm):
         max_length=30,
         required=True,
         help_text='Required.',
-        error_messages={
-            'min_length': 'Please, add more than 2 letters.'
-        }
+        error_messages={'min_length': 'Please, add more than 2 letters.'}
     )
     last_name = forms.CharField(
         min_length=2,
@@ -96,10 +94,7 @@ class RegisterUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = (
-            'first_name', 'last_name', 'email',
-            'username',
-        )
+        fields = ('first_name', 'last_name', 'email', 'username',)
 
     def save(self, commit=True):
         cleaned_data = self.cleaned_data

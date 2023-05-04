@@ -3,6 +3,7 @@ from contact.forms import ContactForm
 from django.urls import reverse
 from contact.models import Contact
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required(login_url='contact:login')
@@ -20,6 +21,7 @@ def create(request):
             contact = form.save(commit=False)
             contact.owner = request.user
             contact.save()
+            messages.success(request, f'{contact.first_name} {contact.last_name} - Criado com sucesso!')
             return redirect('contact:update', contact_id=contact.pk)
 
         return render(request, 'contact/create.html', context)
@@ -50,6 +52,7 @@ def update(request, contact_id):
 
         if form.is_valid():
             contact = form.save()
+            messages.success(request, 'Atualizado com sucesso!')
             return redirect('contact:update', contact_id=contact.pk)
 
         return render(
